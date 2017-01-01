@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+'''
+    Author: Julian Ganguli
+    Date created: 12/20/2016
+    Python Version: 2.7
+'''
+
 import csv
 import sys
 
