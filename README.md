@@ -34,8 +34,11 @@ First create a small sample of data:
 
 Run the MapReduce pipeline on sample data:  
 >`cat path/to/data_sample.txt | python mapper.py | sort | python reducer.py`
+
 ---
+
 ## Final Project Objectives
+
 ##### Students and Posting Time on Forums
 
 Our students come from all around the world, so we need to know both at what times of day the activity is the highest, and to know which of the students are active at that time.  Find for each student what is the hour during which the student has posted the most posts. Output from reducers should be: "author_id \t hour".  If there is a tie: there are multiple hours during which a student has posted a maximum number of posts, please print the student-hour pairs on separate lines. The order in which these lines appear in your output does not matter.
