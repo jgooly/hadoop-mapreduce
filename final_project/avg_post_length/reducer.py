@@ -11,7 +11,7 @@ import sys
 
 def reducer():
     # Initialize variables.
-    oldID, oldTYpe = None, None
+    currId, currType = None, None
     avgAnsLength, ansCount, bodyLenTotal, questionLength = 0, 0, 0, 0
 
     # Split on white space. Map the id, post type, and body length variables.
@@ -21,29 +21,30 @@ def reducer():
         bodyLength = int(line.split("\t")[1])
 
         # If the id has changed, then output the results and reset variables.
-        if oldID and oldID != thisID:
-            print oldID, "\t", questionLength, "\t", avgAnsLength
-            oldID = thisID
-            oldType = thisType
+        if currId and currId != thisID:
+            print currId, "\t", questionLength, "\t", avgAnsLength
+            currId = thisID
+            currType = thisType
             avgAnsLength, ansCount, bodyLenTotal, questionLength = 0, 0, 0, 0
 
-        oldID = thisID
-        oldType = thisType
+        currId = thisID
+        currType = thisType
 
         # Check the post type and calculate the new average if the post type is an 'answer'.
 
-        if oldType == "A":
+        if currType == "A":
             ansCount += 1
             bodyLenTotal += bodyLength
             avgAnsLength = float(bodyLenTotal / ansCount)
+
         # If the post type is a question, then set the question length variable to the body length value.
         # This operation should only happen once for each id.
-        if oldType == "Q":
+        if currType == "Q":
             questionLength = bodyLength
 
     # print last set of values
-    if oldID != None:
-        print oldID, "\t", questionLength, "\t", avgAnsLength
+    if currId != None:
+        print currId, "\t", questionLength, "\t", avgAnsLength
 
 
 if __name__ == "__main__":
